@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,7 +18,10 @@ jobs:
       - name: Baixar código
         uses: actions/checkout@v4
 
-      - name: Publicar no GitHub Pages
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Publicar arquivos
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
