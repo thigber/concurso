@@ -1,0 +1,19 @@
+name: Deploy GitHub Pages
+on: 
+  push:
+    branches: 
+      - main
+jobs: 
+ deploy:
+ runs-on: ubuntu-latest
+steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Publicar no GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy Pages
+        uses: actions/deploy-pages@v4
